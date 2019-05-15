@@ -6,12 +6,14 @@ import { LoginComponent } from './login/login.component';
 import { MovieService } from './services/movie/movie.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieComponent } from './movie/movie.component';
+import { FavoriteComponent } from './favorite/favorite.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MovieComponent
+    MovieComponent,
+    FavoriteComponent
   ],
   imports: [
     BrowserModule,
