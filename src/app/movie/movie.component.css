@@ -1,0 +1,9 @@
+.btn{
+    border-radius: 0px;
+}
+.card{
+    max-height:500px ;
+}
+.card h5{
+    font-size: 17px;
+}
