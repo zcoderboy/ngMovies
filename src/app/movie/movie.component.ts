@@ -10,8 +10,9 @@ import { User } from '../models/user.model';
 })
 export class MovieComponent implements OnInit {
 
-  movies:any;
+  movies : any;
   connectedUser : Object = {};
+  modal : Object = {};
   public static logged : Subject<any> = new Subject();
 
   constructor(private movieService:MovieService) {
@@ -22,6 +23,10 @@ export class MovieComponent implements OnInit {
     this.movieService.getAll().subscribe((data)=>{
       this.movies = data.results;
     });
+  }
+
+  loadModal(index){
+    this.modal = this.movies[index];
   }
 
 }

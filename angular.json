@@ -28,6 +28,7 @@
               "src/styles.css"
             ],
             "scripts": [
+              "src/assets/js/jquery.min.js",
               "src/assets/js/bootstrap.min.js"
             ],
             "es5BrowserSupport": true
@@ -89,7 +90,9 @@
               "src/styles.css"
             ],
             "scripts": [
+              "src/assets/js/jquery.min.js",
               "src/assets/js/bootstrap.min.js"
+
             ],
             "assets": [
               "src/favicon.ico",
