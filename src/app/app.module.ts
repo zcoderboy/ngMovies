@@ -7,6 +7,12 @@ import { MovieService } from './services/movie/movie.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieComponent } from './movie/movie.component';
 import { FavoriteComponent } from './favorite/favorite.component';
+import { AngularFireModule} from '@angular/fire';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
+import { environment } from '../environments/environment';
+import { UserService } from './services/user/user.service';
+import {ReactiveFormsModule,FormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -18,9 +24,13 @@ import { FavoriteComponent } from './favorite/favorite.component';
   imports: [
     BrowserModule,
     routing,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [MovieService],
+  providers: [UserService,AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

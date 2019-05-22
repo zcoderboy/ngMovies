@@ -4,6 +4,7 @@
     <div class="card">
       <article class="card-body">
         <h4 class="card-title text-center mb-4 mt-1">Connexion</h4>
+        <h5 class="text-center error text-danger" *ngIf="loginError"><i class="fa fa-frown-o mr-1"></i>Nom d'utilisateur ou mot de passe incorrect</h5>
         <hr>
         <!-- <p class="text-success text-center">Some message goes here</p> -->
         <form>
@@ -12,7 +13,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
               </div>
-              <input name="" class="form-control" placeholder="Email or login" type="email">
+              <input name="" class="form-control" [(ngModel)]="username" name="username" placeholder="Email or login" type="email">
             </div> <!-- input-group.// -->
           </div> <!-- form-group// -->
           <div class="form-group">
@@ -20,11 +21,11 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
               </div>
-              <input class="form-control" placeholder="******" type="password">
+              <input class="form-control" [(ngModel)]="password" name="password" placeholder="******" type="password">
             </div> <!-- input-group.// -->
           </div> <!-- form-group// -->
           <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block"> Login </button>
+            <button type="submit" (click)="doLogin()" class="btn btn-primary btn-block"> Login </button>
           </div> <!-- form-group// -->
         </form>
       </article>

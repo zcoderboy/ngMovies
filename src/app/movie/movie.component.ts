@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 import { MovieService } from '../services/movie/movie.service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-movie',
@@ -8,8 +10,13 @@ import { MovieService } from '../services/movie/movie.service';
 })
 export class MovieComponent implements OnInit {
 
-  movies:any
-  constructor(private movieService:MovieService) { }
+  movies:any;
+  connectedUser : Object = {};
+  public static logged : Subject<any> = new Subject();
+
+  constructor(private movieService:MovieService) {
+    this.connectedUser = JSON.parse(sessionStorage.getItem('connectedUser'));
+  }
 
   ngOnInit() {
     this.movieService.getAll().subscribe((data)=>{
