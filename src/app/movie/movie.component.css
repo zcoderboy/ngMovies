@@ -7,3 +7,38 @@
 .card h5{
     font-size: 17px;
 }
+.heart{
+    font-size: 25px;
+    cursor: pointer;
+}
+.heartbeat{
+    animation-name: heartBeat;
+    animation-duration: 1000ms;
+    animation-iteration-count: 1; 
+}
+@keyframes heartBeat {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  14% {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+
+  28% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  42% {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+
+  70% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}

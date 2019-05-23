@@ -1,14 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Ngmovies</title>
-  <base href="/">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ngmovies</title>
+    <base href="/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+  <script>
+    $(document).ready(() => {
+      $(".heart").click(function() {
+        if ($(this).hasClass("fa-heart-o")) {
+          $(this).removeClass("fa-heart-o");
+          $(this).addClass("fa-heart");
+          $(this).addClass("heartbeat");
+        } else if ($(this).hasClass("fa-heart")) {
+          $(this).removeClass("fa-heart");
+          $(this).addClass("fa-heart-o");
+          $(this).removeClass("heartbeat");
+          // $(this).addClass("heartbeat");
+        }
+      });
+    });
+  </script>
 </html>

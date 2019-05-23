@@ -18,10 +18,13 @@ export class UserService {
     )
   }
 
-  setFavorite(favorites : string, docId: string){
-    return this.firestore.collection('users').doc(docId).update({
-      favorites : favorites
+  setFavorite(newFavorite : string, docId: string, currentFavorites: string){
+    let updatedFavorites: string = '';
+    currentFavorites == '' ? updatedFavorites = `${newFavorite}` : updatedFavorites = `${currentFavorites}#${newFavorite}`
+    this.firestore.collection('users').doc(docId).update({
+      favorites : updatedFavorites
     })
+    return updatedFavorites;
   }
 
   checkDoc(docId:string){
