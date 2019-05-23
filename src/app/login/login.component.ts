@@ -17,12 +17,6 @@ export class LoginComponent implements OnInit {
   constructor(private _userService : UserService, private _router : Router) { }
 
   ngOnInit() {
-    // this._userService.getUser('test','test').snapshotChanges().subscribe((data)=>{
-    //   console.log(data[0].payload.doc.data());
-    //   this._userService.setFavorite("fav",data[0].payload.doc.id).then(()=>{
-    //     console.log("Updated")
-    //   })
-    // })
   }
 
   doLogin(){
