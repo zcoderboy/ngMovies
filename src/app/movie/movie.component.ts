@@ -3,6 +3,9 @@ import { Subject } from 'rxjs';
 import { MovieService } from '../services/movie/movie.service';
 import { User } from '../models/user.model';
 import { UserService } from '../services/user/user.service';
+import { HeartBeat } from "../jquery-utils";
+import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie',
@@ -16,7 +19,7 @@ export class MovieComponent implements OnInit {
   modal : Object = {};
   public static logged : Subject<any> = new Subject();
 
-  constructor(private _movieService:MovieService,private _userService:UserService) {
+  constructor(private _movieService:MovieService,private _userService:UserService,private route:Router) {
     this.connectedUser = JSON.parse(sessionStorage.getItem('connectedUser'));
   }
 
@@ -31,10 +34,32 @@ export class MovieComponent implements OnInit {
   }
 
   favorite(event,movieId){
-    // let docId  = JSON.parse(sessionStorage.getItem('docId'));
-    // let newFavorites = this._userService.setFavorite(movieId,docId,this.connectedUser.favorites);
-    // this.connectedUser.favorites = newFavorites;
-    // sessionStorage.setItem('connectedUser',JSON.stringify(this.connectedUser));
+    if(HeartBeat(event.target)){
+      this.connectedUser.favorites = this._userService.setFavorite(
+        movieId,
+        JSON.parse(sessionStorage.getItem('docId')),
+        this.connectedUser.favorites
+      );
+      sessionStorage.setItem('connectedUser',JSON.stringify(this.connectedUser));
+    }else{
+      this.connectedUser.favorites = this._userService.unsetFavorite(
+        movieId,
+        JSON.parse(sessionStorage.getItem('docId')),
+        this.connectedUser.favorites
+      );
+      sessionStorage.setItem('connectedUser',JSON.stringify(this.connectedUser));
+    }; 
   }
 
+  loadFavorites(){
+    if(this.connectedUser.favorites != ""){
+      this.route.navigate(['/favoris'])
+    }else{
+      Swal.fire({
+        title: '<h5>Aucun favori !</h5>',
+        type : 'info',
+        width:300,
+      })
+    }
+  }
 }

@@ -36,4 +36,20 @@ export class UserService {
       }
     });
   }
+
+  unsetFavorite(oldFavorite : string, docId: string, currentFavorites: string){
+    let favArray = currentFavorites.split('#');
+    let updatedFavorites = '';
+    favArray.forEach((fav,index)=>{
+      if(index == 0){
+        fav != oldFavorite ? updatedFavorites += `${fav}` : ''; 
+      }else{
+        fav != oldFavorite ? updatedFavorites += `#${fav}` : ''; 
+      }
+    })
+    this.firestore.collection('users').doc(docId).update({
+      favorites : updatedFavorites
+    })
+    return updatedFavorites;
+  }
 }

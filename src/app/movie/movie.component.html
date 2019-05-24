@@ -24,7 +24,7 @@
           </a>
         </li>
         <li class="nav-item mr-2">
-          <a class="nav-link" href="#"
+          <a class="nav-link" (click)="loadFavorites()"
             ><i class="fa fa-heart mr-2 text-white"></i>Favoris</a
           >
         </li>
@@ -98,7 +98,8 @@
               <i
                 class="fa heart fa-heart-o text-danger pull-right"
                 aria-hidden="true"
-                (click)="favorite(event,movie.id)"
+                (click)="favorite($event,movie.id)"
+                liked=""
               ></i>
             </div>
           </div>

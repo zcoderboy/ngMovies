@@ -12,19 +12,5 @@
     <app-root></app-root>
   </body>
   <script>
-    $(document).ready(() => {
-      $(".heart").click(function() {
-        if ($(this).hasClass("fa-heart-o")) {
-          $(this).removeClass("fa-heart-o");
-          $(this).addClass("fa-heart");
-          $(this).addClass("heartbeat");
-        } else if ($(this).hasClass("fa-heart")) {
-          $(this).removeClass("fa-heart");
-          $(this).addClass("fa-heart-o");
-          $(this).removeClass("heartbeat");
-          // $(this).addClass("heartbeat");
-        }
-      });
-    });
   </script>
 </html>

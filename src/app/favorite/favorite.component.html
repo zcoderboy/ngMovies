@@ -1,3 +1,109 @@
-<p>
-  favorite works!
-</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <h3>ngfavorites</h3>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarResponsive"
+      aria-controls="navbarResponsive"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item mr-2">
+          <a class="nav-link" href="" [routerLink]="['/home']"
+            ><i class="fa fa-home mr-2 text-white"></i>Accueil
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item mr-2 active">
+          <a class="nav-link" href="" [routerLink]="['/favoris']"
+            ><i class="fa fa-heart mr-2 text-white"></i>Favoris
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"
+            ><i class="fa fa-newspaper-o mr-2 text-white"></i>A la une</a
+          >
+        </li>
+        <li class="nav-item ml-4">
+          <a class="nav-link text-white" href="#"
+            ><i class="fa fa-user mr-2 text-white"></i
+            >{{ connectedUser.firstName }} {{ connectedUser.lastName }}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h5 class="text-center font-weight-bold mt-4">
+        <i class="fa fa-heart text-danger mr-2"></i>Mes shows favoris
+      </h5>
+      <div class="row mt-5">
+        <div class="col-lg-4" *ngFor="let favorite of favorites; let i = index">
+          <div class="card mb-4" style="width: 18rem;">
+            <img
+              class="card-img-top"
+              src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
+                favorite.poster_path
+              }}"
+              alt="Card image cap"
+              height="370px"
+              width="100px"
+            />
+            <div class="card-body">
+              <h5
+                class="card-title text-center font-weight-bolder"
+                *ngIf="favorite.original_title"
+              >
+                {{ favorite.original_title }}
+              </h5>
+              <h5
+                class="card-title text-center font-weight-bolder"
+                *ngIf="favorite.original_name"
+              >
+                {{ favorite.original_name }}
+              </h5>
+              <p class="card-text">
+                Spectateurs <i class="fa fa-arrow-circle-o-right ml-1"></i>
+                {{ favorite.popularity }}<br />
+                Note <i class="fa fa-arrow-circle-o-right ml-1"></i>
+                {{ favorite.vote_average }}/10
+              </p>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <button
+                    class="btn btn-dark"
+                    (click)="loadModal(i)"
+                    data-toggle="modal"
+                    data-target="#details"
+                  >
+                    Détails
+                  </button>
+                </div>
+              </div>
+
+              <i
+                class="fa heart fa-heart text-danger pull-right"
+                aria-hidden="true"
+                (click)="unsetFavorite(i,favorite.id)"
+                liked=""
+              ></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

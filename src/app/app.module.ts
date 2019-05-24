@@ -30,7 +30,7 @@ import {ReactiveFormsModule,FormsModule} from '@angular/forms'
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [UserService,AngularFirestore],
+  providers: [UserService,AngularFirestore,MovieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
