@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-lg-3 mx-auto mt-4">
-    <h2 class="text-center mx-auto mb-4">NgMovies</h2>
+    <h2 class="text-center mx-auto mb-4">ngMovies</h2>
     <div class="card">
       <article class="card-body">
         <h4 class="card-title text-center mb-4 mt-1">Connexion</h4>
@@ -25,7 +25,8 @@
             </div> <!-- input-group.// -->
           </div> <!-- form-group// -->
           <div class="form-group">
-            <button type="submit" (click)="doLogin()" class="btn btn-primary btn-block"> Login </button>
+            <button type="submit" (click)="doLogin()" class="btn btn-success btn-block"> Se connecter </button>
+            <button type="submit" [routerLink]="['/register']" class="btn btn-outline-dark btn-block"> S'inscrire</button>
           </div> <!-- form-group// -->
         </form>
       </article>

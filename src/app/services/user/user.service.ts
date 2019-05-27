@@ -9,7 +9,7 @@ export class UserService {
   constructor(private firestore: AngularFirestore) { }
 
   addUser(user : User){
-    this.firestore.collection('users').add(user);
+    return this.firestore.collection('users').add(user);
   }
 
   getUser(login : string, password : string){
@@ -51,5 +51,15 @@ export class UserService {
       favorites : updatedFavorites
     })
     return updatedFavorites;
+  }
+
+  checkUsername(username : string){
+    let value = false;
+    this.firestore.collection('users', ref => 
+      ref.where('login','==',username)
+    ).snapshotChanges().subscribe(data => {
+      data[0] ? value = true : "";
+    })
+    return value;
   }
 }

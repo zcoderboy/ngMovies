@@ -1,0 +1,106 @@
+<div class="row">
+  <div class="col-lg-3 mx-auto mt-4">
+    <h2 class="text-center mx-auto mb-4">ngMovies</h2>
+    <div class="card">
+      <article class="card-body">
+        <h4 class="card-title text-center mb-4 mt-1">Inscription</h4>
+        <h5 class="text-center error text-danger" *ngIf="loginError"><i class="fa fa-frown-o mr-1"></i>Nom d'utilisateur ou mot de passe incorrect</h5>
+        <hr>
+        <!-- <p class="text-success text-center">Some message goes here</p> -->
+        <form novalidate [formGroup]="registerForm" (ngSubmit)="register($event)">
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+              </div>
+              <input name="" class="form-control" formControlName="firstName" [(ngModel)]="newUser.firstName" name="firstName" placeholder="Prénom" type="text">
+            </div> <!-- input-group.// -->
+          </div> <!-- form-group// -->
+          <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="mb-1 toped">            
+            <div *ngIf="firstName.errors.pattern && !firstName.errors.minlength && !firstName.errors.required" class="">
+              <label class="text-danger"><i class="fa fa-times-circle text-danger mr-2"></i>Votre saisie content des caractéres illégaux</label>
+            </div>
+            <div *ngIf="firstName.errors.pattern && firstName.errors.minlength && !firstName.errors.required" class="">
+              <label class="text-danger"><i class="fa fa-times-circle text-danger mr-2"></i>Votre saisie content des caractéres illégaux</label>
+            </div>
+            <div *ngIf="!firstName.errors.pattern && firstName.errors.minlength && !firstName.errors.required" class="">
+              <label class="text-danger"><i class="fa fa-times-circle text-danger mr-2"></i>Ce champ doit contenir au moins 4 caractéres</label>
+            </div>
+            <div *ngIf="!firstName.errors.pattern && !firstName.errors.minlength && firstName.errors.required" class="">
+              <label class="text-danger"><i class="fa fa-times-circle text-danger mr-2"></i>Ce champ est obligatoire</label>
+            </div>
+          </div>
+          <div *ngIf="firstName.valid" class="mb-1 toped">
+            <label class="text-success"><i class="fa fa-check-circle text-success mr-2"></i>Valide</label>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+              </div>
+              <input class="form-control" formControlName="lastName" [(ngModel)]="newUser.lastName" name="lastName" placeholder="Nom" type="text">
+            </div> <!-- input-group.// -->
+          </div> <!-- form-group// -->
+          <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="mb-1 toped">            
+            <div *ngIf="lastName.errors.pattern && !lastName.errors.minlength && !lastName.errors.required" class="">
+              <label class="text-danger"><i class="fa fa-times-circle text-danger mr-2"></i>Votre saisie content des caractéres illégaux</label>
+            </div>
+            <div *ngIf="lastName.errors.pattern && lastName.errors.minlength && !lastName.errors.required" class="">
+              <label class="text-danger"><i class="fa fa-times-circle text-danger mr-2"></i>Votre saisie content des caractéres illégaux</label>
+            </div>
+            <div *ngIf="!lastName.errors.pattern && lastName.errors.minlength && !lastName.errors.required" class="">
+              <label class="text-danger"><i class="fa fa-times-circle text-danger mr-2"></i>Ce champ doit contenir au moins 4 caractéres</label>
+            </div>
+            <div *ngIf="!lastName.errors.pattern && !lastName.errors.minlength && lastName.errors.required" class="">
+              <label class="text-danger"><i class="fa fa-times-circle text-danger mr-2"></i>Ce champ est obligatoire</label>
+            </div>
+          </div>
+          <div *ngIf="lastName.valid" class="mb-1 toped">
+            <label class="text-success"><i class="fa fa-check-circle text-success mr-2"></i>Valide</label>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+              </div>
+              <input class="form-control" formControlName="login" [(ngModel)]="newUser.login" name="login" placeholder="Nom d'utilisateur" type="text">
+            </div> <!-- input-group.// -->
+          </div>
+          <div *ngIf="login.invalid && (login.dirty || login.touched)" class="mb-1">            
+            <div *ngIf="login.errors.pattern && !login.errors.required" class="mt-1">
+              <label class="text-danger"><i class="fa fa-times-circle text-danger mr-2"></i>Invalide</label>
+            </div>
+            <div *ngIf="!login.errors.pattern && login.errors.required" class="mt-1">
+              <label class="text-danger"><i class="fa fa-times-circle text-danger mr-2"></i>Ce champ est obligatoire</label>
+            </div>
+          </div>
+          <div *ngIf="login.valid" class="mb-1 toped">
+            <label class="text-success"><i class="fa fa-check-circle text-success mr-2"></i>Valide</label>
+          </div> 
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-lock"></i></span>
+              </div>
+              <input class="form-control" formControlName="password" [(ngModel)]="newUser.password" name="password" placeholder="*****" type="password">
+            </div> <!-- input-group.// -->
+          </div>
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="mb-1 toped">            
+            <div *ngIf="!password.errors.pattern && password.errors.required" class="">
+              <label class="text-danger"><i class="fa fa-times-circle text-danger mr-2"></i>Ce champ est obligatoire</label>
+            </div>
+            <div *ngIf="password.errors.pattern && !password.errors.required" class="">
+              <label class="text-danger"><i class="fa fa-times-circle text-danger mr-2"></i>Le mot de passe ne correspond pas au motif défini</label>
+            </div>
+          </div>
+          <div *ngIf="password.valid" class="mb-1 toped">
+            <label class="text-success"><i class="fa fa-check-circle text-success mr-2"></i>Valide</label>
+          </div> 
+          <div class="form-group">
+            <button type="submit" [disabled]="!registerForm.valid" class="btn btn-dark btn-block"> S'inscrire</button>
+          </div> <!-- form-group// -->
+        </form>
+      </article>
+    </div>
+  </div>
+</div>

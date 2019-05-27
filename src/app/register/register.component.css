@@ -1,0 +1,15 @@
+.error{
+  font-size: 13px;
+}
+.btn{
+  border-radius: 0px;
+}
+input{
+  border-radius: 0px;
+}
+label{
+  font-size: 12px;
+}
+.toped{
+  margin-top:-10px;
+}

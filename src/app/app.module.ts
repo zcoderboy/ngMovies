@@ -12,14 +12,16 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule} from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { UserService } from './services/user/user.service';
-import {ReactiveFormsModule,FormsModule} from '@angular/forms'
+import {ReactiveFormsModule,FormsModule} from '@angular/forms';
+import { RegisterComponent } from './register/register.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MovieComponent,
-    FavoriteComponent
+    FavoriteComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
