@@ -13,6 +13,7 @@ export class FavoriteComponent implements OnInit {
 
   connectedUser : User = new User ();
   favorites = [] ;
+  modal : Object = {};
   constructor(private _movieService:MovieService,private _userService:UserService,private router : Router) {
     this.connectedUser = JSON.parse(sessionStorage.getItem('connectedUser'));
   }
@@ -34,6 +35,16 @@ export class FavoriteComponent implements OnInit {
     this.favorites.splice(index,1);
     sessionStorage.setItem('connectedUser',JSON.stringify(this.connectedUser));
     this.favorites.length == 0 ? this.router.navigate(['/home']) : "";
+  }
+
+  logout(){
+    sessionStorage.removeItem('connectedUser');
+    sessionStorage.removeItem('docId');
+    this.router.navigate(['/'])
+  }
+
+  loadModal(index){
+    this.modal = this.favorites[index];
   }
 
 }

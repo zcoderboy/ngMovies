@@ -41,11 +41,13 @@ export class RegisterComponent implements OnInit {
 
   register(){
     this.newUser.favorites = '';
-    this._userService.addUser(this.newUser).then(function(){
-      this.router.navigate(['/']);
-    }).catch(function(){
-
+    this._userService.addUser(this.newUser).then((some)=>this.extractData()).catch(function(){
+      
     })
+  }
+
+  private extractData() {
+    this.router.navigate(['/']) 
   }
 
 }

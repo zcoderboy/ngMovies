@@ -14,12 +14,13 @@ import { Router } from '@angular/router';
 })
 export class MovieComponent implements OnInit {
 
-  movies : any;
+  movies = [];
   connectedUser : User = new User ();
   modal : Object = {};
+  favArray = [];
   public static logged : Subject<any> = new Subject();
 
-  constructor(private _movieService:MovieService,private _userService:UserService,private route:Router) {
+  constructor(private _movieService:MovieService,private _userService:UserService,private router:Router) {
     this.connectedUser = JSON.parse(sessionStorage.getItem('connectedUser'));
   }
 
@@ -27,6 +28,7 @@ export class MovieComponent implements OnInit {
     this._movieService.getAll().subscribe((data)=>{
       this.movies = data.results;
     });
+    this._userService.getFavs(JSON.parse(sessionStorage.getItem('docId'))).then((doc)=>this.extractData(doc))
   }
 
   loadModal(index){
@@ -53,13 +55,31 @@ export class MovieComponent implements OnInit {
 
   loadFavorites(){
     if(this.connectedUser.favorites != ""){
-      this.route.navigate(['/favoris'])
+      this.router.navigate(['/favoris'])
     }else{
       Swal.fire({
-        title: '<h5>Aucun favori !</h5>',
+        title: '<h5>Vous n\'avez pas de favoris !</h5>',
         type : 'info',
         width:300,
       })
     }
+  }
+
+  private extractData(doc: any) {
+    let favs = doc.data().favorites.split('#');
+    favs.forEach(fav => {
+      this.movies.forEach(movie =>{
+        if(movie.id == fav){
+          movie.liked = true;
+        }
+      })
+    });
+    console.log(this.movies);
+  }
+
+  logout(){
+    sessionStorage.removeItem('connectedUser');
+    sessionStorage.removeItem('docId');
+    this.router.navigate(['/'])
   }
 }

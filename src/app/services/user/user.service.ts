@@ -62,4 +62,8 @@ export class UserService {
     })
     return value;
   }
+
+  async getFavs(docId:string){
+    return await this.firestore.collection('users').doc(docId).get().toPromise();
+  }
 }
