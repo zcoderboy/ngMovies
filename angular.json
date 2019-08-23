@@ -21,7 +21,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/_redirects"
+              "_redirects"
             ],
             "styles": [
               "src/assets/css/bootstrap.min.css",
