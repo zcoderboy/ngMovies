@@ -17,7 +17,7 @@ export class MovieService {
   getUserFavorites(favorites:string){
     let movies = []
     favorites.split('#').forEach((favorite)=>{
-      this.http.get<api.favoriteResult>(api.buildUrl(favorite)).subscribe(data:any => {
+      this.http.get<api.favoriteResult>(api.buildUrl(favorite)).subscribe(data=> {
         movies.push(data);
       });
     })
