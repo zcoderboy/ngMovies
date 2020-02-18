@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active mr-2">
-                    <a class="nav-link" href="#"><i class="fa fa-home mr-2 text-white"></i>Accueil
+                    <a class="nav-link" href="/home"><i class="fa fa-home mr-2 text-white"></i>Accueil
                         <span class="sr-only">(cunrrent)</span>
                     </a>
                 </li>
@@ -19,7 +19,7 @@
                     <a class="nav-link" (click)="loadFavorites()"><i class="fa fa-heart mr-2 text-white"></i>Favoris</a>
                 </li>
                 <li class="nav-item ml-2">
-                    <a class="nav-link text-white" href="#"><i
+                    <a class="nav-link text-white"><i
                             class="fa fa-user mr-2 text-white"></i>{{ connectedUser.firstName }}
                         {{ connectedUser.lastName }}</a>
                 </li>
@@ -42,7 +42,7 @@
       </h5>
       <div class="row mt-5">
         <div class="col-lg-4" *ngFor="let movie of movies; let i = index">
-          <div class="card mb-4" style="width: 18rem;">
+          <div class="card mb-4 w-sm-100" style="width: 18rem;">
             <img
               class="card-img-top"
               src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{

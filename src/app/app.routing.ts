@@ -12,4 +12,3 @@ const routes: Routes = [
  {path: 'register', component: RegisterComponent},
 ];
 export const routing = RouterModule.forRoot(routes);
- 
