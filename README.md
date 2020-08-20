@@ -1,9 +1,7 @@
 # Ngmovies
 
-ngMovies est une application permettant de découvrir des films, de les mettre en favoris et de voir les détails.
-Un backend Cloud FireStore est utilisé pour la persistence des données et les informations sur les films proviennent
-de l'API The Movie Database.
+ngMovies is an movie library app made with Angular and using iMDB API to pull movies information.
 
 ## Accés
-Nom d'utilisateur : user.ngmovies
-Mot de passe : gta12345
+Default username : user.ngmovies
+Default password : gta12345
