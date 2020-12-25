@@ -23,7 +23,7 @@
     "@angular/router": "^7.2.16",
     "core-js": "^2.6.11",
     "firebase": "^6.6.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "rxjs": "~6.3.3",
     "sweetalert2": "^8.19.0",
     "tslib": "^1.10.0",
